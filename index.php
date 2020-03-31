@@ -15,7 +15,7 @@ require __DIR__.'/vendor/autoload.php';
  */
 require_once __DIR__.'/Core/Autoloader.php';
 $autoLoader = new Core\Autoloader;
-$autoLoader->load();
+// $autoLoader->load();
 
 $app = new Core\System\App;
 $app->run();

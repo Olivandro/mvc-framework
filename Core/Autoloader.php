@@ -19,12 +19,13 @@ class Autoloader {
     {
 
         $this->corePath = __DIR__ . '/System';
-        
-        spl_autoload_register(array($this,'load'));
+        spl_autoload_register(array($this,'loadCore'));
+        spl_autoload_register(array($this,'loadControllers'));
+        spl_autoload_register(array($this,'loadModels'));
 
     }
 
-    public function load()
+    public function loadCore()
     {
         $_PATH = __DIR__ . '/System';
         $_CORE = glob($_PATH . '/*.php');
@@ -47,5 +48,30 @@ class Autoloader {
         }  
     }
 
+    private function loadControllers()
+    {
+        $_PATH = __DIR__ . '/Controllers';
+        $_CORE = glob($_PATH . '/*.php');
+        if ($_CORE) 
+        {
+            foreach ($_CORE as $path) 
+            {
+                require_once $path;
+            }    
+        }  
+    }
+
+    private function loadModels()
+    {
+        $_PATH = __DIR__ . '/Models';
+        $_CORE = glob($_PATH . '/*.php');
+        if ($_CORE) 
+        {
+            foreach ($_CORE as $path) 
+            {
+                require_once $path;
+            }    
+        }  
+    }
 
 }
